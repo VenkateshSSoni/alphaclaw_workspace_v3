@@ -7,6 +7,10 @@
       },
       "models": {
         "google/gemini-3.1-pro-preview": {}
+      },
+      "maxConcurrent": 8,
+      "subagents": {
+        "maxConcurrent": 6
       }
     }
   },
@@ -27,12 +31,19 @@
     ],
     "controlUi": {
       "allowedOrigins": [
-        "https://alphaclaw-gateway.orangeglacier-4aa816a2.uaenorth.azurecontainerapps.io"
+        "https://alphaclaw-gateway.orangeglacier-4aa816a2.uaenorth.azurecontainerapps.io",
+        "http://localhost:3000"
       ]
     }
   },
   "session": {
-    "dmScope": "per-channel-peer"
+    "dmScope": "per-channel-peer",
+    "resetByType": {
+      "thread": {
+        "mode": "idle",
+        "idleMinutes": 525600
+      }
+    }
   },
   "tools": {
     "profile": "full",
@@ -87,18 +98,32 @@
   },
   "meta": {
     "lastTouchedVersion": "2026.5.28",
-    "lastTouchedAt": "2026-06-11T04:53:56.271Z"
+    "lastTouchedAt": "2026-06-11T04:54:39.168Z"
   },
   "channels": {
     "telegram": {
       "enabled": true,
       "botToken": "${TELEGRAM_BOT_TOKEN}",
       "dmPolicy": "pairing",
-      "groupPolicy": "allowlist"
+      "groupPolicy": "allowlist",
+      "groups": {
+        "-1004212675908": {
+          "requireMention": false,
+          "topics": {
+            "13": {
+              "systemPrompt": "Executive Intelligence Topic for Briefs"
+            }
+          }
+        }
+      },
+      "groupAllowFrom": []
     }
   },
   "commands": {
-    "restart": true
+    "restart": true,
+    "ownerAllowFrom": [
+      "telegram:7725077768"
+    ]
   },
   "hooks": {
     "internal": {
