@@ -3,10 +3,9 @@
     "defaults": {
       "workspace": "/data/.openclaw/workspace",
       "model": {
-        "primary": "google/gemini-3.1-pro-preview"
+        "primary": "openai/gpt-5.4-nano"
       },
       "models": {
-        "google/gemini-3.1-pro-preview": {},
         "openai/gpt-5.4-nano": {}
       },
       "maxConcurrent": 8,
