@@ -6,7 +6,8 @@
         "primary": "google/gemini-3.1-pro-preview"
       },
       "models": {
-        "google/gemini-3.1-pro-preview": {}
+        "google/gemini-3.1-pro-preview": {},
+        "openai/gpt-5.4-nano": {}
       },
       "maxConcurrent": 8,
       "subagents": {
@@ -81,6 +82,10 @@
     "profiles": {
       "google:default": {
         "provider": "google",
+        "mode": "api_key"
+      },
+      "openai:default": {
+        "provider": "openai",
         "mode": "api_key"
       }
     }
