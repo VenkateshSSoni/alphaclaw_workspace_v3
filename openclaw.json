@@ -1,0 +1,129 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/data/.openclaw/workspace",
+      "model": {
+        "primary": "google/gemini-3.1-pro-preview"
+      },
+      "models": {
+        "google/gemini-3.1-pro-preview": {}
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "9694bbad0b238a8f289f2bfa734797049bbe543b9843af19"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "trustedProxies": [
+      "127.0.0.1"
+    ],
+    "controlUi": {
+      "allowedOrigins": [
+        "https://alphaclaw-gateway.orangeglacier-4aa816a2.uaenorth.azurecontainerapps.io"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "full",
+    "exec": {
+      "security": "full",
+      "strictInlineEval": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "google": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      },
+      "usage-tracker": {
+        "enabled": true,
+        "hooks": {
+          "allowConversationAccess": true
+        }
+      }
+    },
+    "allow": [
+      "telegram",
+      "usage-tracker"
+    ],
+    "load": {
+      "paths": [
+        "/app/lib/plugin/usage-tracker"
+      ]
+    }
+  },
+  "auth": {
+    "profiles": {
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      }
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-06-11T04:53:54.459Z",
+    "lastRunVersion": "2026.5.28",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.5.28",
+    "lastTouchedAt": "2026-06-11T04:53:56.271Z"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist"
+    }
+  },
+  "commands": {
+    "restart": true
+  },
+  "hooks": {
+    "internal": {
+      "entries": {
+        "bootstrap-extra-files": {
+          "enabled": true,
+          "paths": [
+            "hooks/bootstrap/AGENTS.md",
+            "hooks/bootstrap/TOOLS.md"
+          ]
+        }
+      },
+      "enabled": true
+    }
+  },
+  "mcp": {
+    "servers": {
+      "gbrain": {
+        "url": "https://gbrain-mcp-server.orangeglacier-4aa816a2.uaenorth.azurecontainerapps.io/mcp",
+        "transport": "streamable-http",
+        "headers": {
+          "Authorization": "Bearer ${REMOTE_MCP_API_TOKEN}"
+        },
+        "_alphaclawManaged": true
+      }
+    }
+  }
+}
