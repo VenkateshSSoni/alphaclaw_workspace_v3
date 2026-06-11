@@ -116,7 +116,9 @@
           }
         }
       },
-      "groupAllowFrom": []
+      "groupAllowFrom": [
+        "7725077768"
+      ]
     }
   },
   "commands": {
